@@ -8,6 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
+        Application.logger.info("Home page routed.");
         return "home";
     }
 }

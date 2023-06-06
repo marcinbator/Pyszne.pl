@@ -1,0 +1,8 @@
+cze 06, 2023 8:10:15 PM com.example.pyszne_pl.Application runLogger
+INFO: Logger initialized.
+cze 06, 2023 8:10:15 PM com.example.pyszne_pl.Application main
+INFO: App started successfully.
+cze 06, 2023 8:10:19 PM com.example.pyszne_pl.HomeController home
+INFO: Home page routedade.
+cze 06, 2023 8:10:53 PM com.example.pyszne_pl.HomeController home
+INFO: Home page routedade.
