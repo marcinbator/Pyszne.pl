@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+    <a href="/">Wróć</a>
+    <form action="#" th:action="@{/order}" th:object="${order}">
+        <label>
+            Id:
+            <input type="text" th:field="${order.id}"/>
+        </label>
+        <label>
+            Name:
+            <input type="text" th:field="${order.name}"/>
+        </label>
+        <label>
+            Name:
+            <input type="submit" value="Prześlij"/>
+        </label>
+    </form>
+    <p th:text="${order.getName()}"></p>
+</body>
+</html>
