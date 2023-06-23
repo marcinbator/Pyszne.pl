@@ -1,17 +1,17 @@
 package com.example.pyszne_pl;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 
 @Data
-@RequiredArgsConstructor
 public class Pizza {
-
-    private final int id;
-    private final String name;
+    private int id;
+    @NotNull
+    @Size(min=5, message = "Too small size.")
+    private String name;
     private enum size{SMALL, MEDIUM, LARGE};
     private ArrayList<String> ingredients;
 }

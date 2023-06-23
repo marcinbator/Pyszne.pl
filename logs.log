@@ -1,6 +1,12 @@
-cze 06, 2023 8:45:46 PM com.example.pyszne_pl.Application runLogger
+cze 23, 2023 4:17:54 PM com.example.pyszne_pl.Application runLogger
 INFO: Logger initialized.
-cze 06, 2023 8:45:46 PM com.example.pyszne_pl.Application main
+cze 23, 2023 4:17:54 PM com.example.pyszne_pl.Application main
 INFO: App started successfully.
-cze 06, 2023 8:45:49 PM com.example.pyszne_pl.OrderController order
+cze 23, 2023 4:17:54 PM com.example.pyszne_pl.OrderController order
 INFO: Order page routed.
+cze 23, 2023 4:17:56 PM com.example.pyszne_pl.OrderController order
+INFO: Order done.
+cze 23, 2023 4:17:58 PM com.example.pyszne_pl.OrderController order
+INFO: Order page routed.
+cze 23, 2023 4:18:00 PM com.example.pyszne_pl.HomeController home
+INFO: Home page routed.

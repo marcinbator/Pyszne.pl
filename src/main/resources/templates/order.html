@@ -6,20 +6,16 @@
 </head>
 <body>
     <a href="/">Wróć</a>
-    <form action="#" th:action="@{/order}" th:object="${order}">
-        <label>
-            Id:
-            <input type="text" th:field="${order.id}"/>
-        </label>
+    <p th:text="${errors}"></p>
+    <form action="#" th:action="@{/order}" th:object="${order}" method="POST">
         <label>
             Name:
-            <input type="text" th:field="${order.name}"/>
+            <input type="text" th:field="*{name}"/>
         </label>
         <label>
             Name:
             <input type="submit" value="Prześlij"/>
         </label>
     </form>
-    <p th:text="${order.getName()}"></p>
 </body>
 </html>
