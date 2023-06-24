@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Order</title>
+  <meta charset="UTF-8">
+  <title>Order</title>
 </head>
 <body>
-    <a href="/">Wróć</a>
-    <p th:text="${errors}"></p>
-    <form action="#" th:action="@{/order}" th:object="${order}" method="POST">
-        <label>
-            Name:
-            <input type="text" th:field="*{name}"/>
-        </label>
-        <label>
-            Name:
-            <input type="submit" value="Prześlij"/>
-        </label>
-    </form>
+<a href="/">Wróć</a>
+<form action="#" th:action="@{/order}" th:object="${pizza}" method="POST">
+  <label>
+    Name:
+    <input type="text" th:field="*{name}"/>
+  </label>
+  <label>
+    Name:
+    <input type="submit" value="Prześlij"/>
+  </label>
+</form>
 </body>
 </html>

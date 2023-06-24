@@ -1,14 +1,16 @@
-package com.example.pyszne_pl;
+package com.example.pyszne_pl_2;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -17,18 +19,16 @@ public class OrderController {
 
     @GetMapping
     public String order(Model model){
-        model.addAttribute("order", new Pizza());
+        model.addAttribute("pizza", new Pizza());
         return "order";
     }
 
     @PostMapping
-    public String order(@Valid Pizza pizza, Model model, Errors errors){
-        if(!errors.hasErrors()){
-            model.addAttribute("pizza", pizza);
-            return "summary";
+    public String order(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult result){
+        if(result.hasErrors()){
+            return "order";
         }
-        model.addAttribute("errors", errors);
-        return "order";
+        return "summary";
     }
 
 }
