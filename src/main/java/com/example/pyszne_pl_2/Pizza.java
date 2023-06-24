@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class Pizza {
-    @Size(min=5)
+    @Size(min=5, message="Nazwa zła xD")
     private String name;
 }

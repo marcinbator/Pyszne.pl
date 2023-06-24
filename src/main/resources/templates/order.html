@@ -10,9 +10,9 @@
   <label>
     Name:
     <input type="text" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
   </label>
   <label>
-    Name:
     <input type="submit" value="Prześlij"/>
   </label>
 </form>
