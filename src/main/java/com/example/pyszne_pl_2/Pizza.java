@@ -6,13 +6,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="pizzas")
+@Table(name="pizzas", schema = "public")
 public class Pizza {
+
     @Id
-    @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name="name")
-    @Size(min=5, message="Nazwa zła xD")
+    private Integer id;
+
+    @Size(min=5)
     private String name;
 }
