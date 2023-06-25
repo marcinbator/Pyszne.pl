@@ -6,6 +6,13 @@
 </head>
 <body>
 Siemanoxsass
+<table>
+  <th:block th:each="pizza : ${pizzas}">
+    <tr>
+      <td th:text="${pizza.getName()}">...</td>
+    </tr>
+  </th:block>
+</table>
 <a href="/order">
   Zamów
 </a>
