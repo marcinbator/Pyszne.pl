@@ -1,18 +1,21 @@
-package com.example.pyszne_pl_2;
+package com.example.pyszne_pl_2.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @Entity
-@Table(name="pizzas", schema = "public")
 public class Pizza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     @Size(min=5)
     private String name;
+
+    private BigDecimal price;
 }
