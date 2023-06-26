@@ -5,17 +5,10 @@
   <title>Homo</title>
 </head>
 <body>
-Siemanoxsass
-<table>
-  <th:block th:each="pizza : ${pizzas}">
-    <tr>
-      <td th:text="${pizza.getName()}">...</td>
-    </tr>
-  </th:block>
-</table>
-<a href="/order">
-  Zamów
+<a href="/search">
+  Szukaj pizzy w bazie
 </a>
-
+<br/>
+<a href="/api/pizzas">Wyświetl API pizzy</a>
 </body>
 </html>

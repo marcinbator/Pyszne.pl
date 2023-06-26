@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szukej</title>
+</head>
+<body>
+  <form action="#" th:action="@{/search}" method="post" th:object="${pizza}">
+    <input type="text" th:field="*{name}">
+    <input type="submit" value="Szukej">
+  </form>
+</body>
+</html>
