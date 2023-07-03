@@ -3,6 +3,7 @@ package com.example.pyszne_pl_2.controllers;
 import com.example.pyszne_pl_2.models.Pizza;
 import com.example.pyszne_pl_2.repositories.PizzaRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class SearchController {
 
-    PizzaRepository pizzaRepository;
+    private PizzaRepository pizzaRepository;
 
     @GetMapping
     public String search(Model model){

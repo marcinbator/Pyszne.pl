@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Pizza {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Size(min=5)
