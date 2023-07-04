@@ -30,13 +30,14 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
                 )
-                .formLogin((formLogin)->formLogin
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .loginPage("/login")
-                        .failureUrl("/login")
-                        .loginProcessingUrl("/login")
-                        .permitAll());
+                .httpBasic(withDefaults());
+//                .formLogin((formLogin)->formLogin
+//                        .usernameParameter("username")
+//                        .passwordParameter("password")
+//                        .loginPage("/login")
+//                        .failureUrl("/login")
+//                        .loginProcessingUrl("/login")
+//                        .permitAll());
         return http.build();
     }
 
