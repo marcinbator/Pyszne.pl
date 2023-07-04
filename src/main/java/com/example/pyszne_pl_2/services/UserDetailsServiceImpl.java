@@ -1,9 +1,9 @@
 package com.example.pyszne_pl_2.services;
 
-import com.example.pyszne_pl_2.models.User;
+import com.example.pyszne_pl_2.models.MyUser;
 import com.example.pyszne_pl_2.repositories.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,15 +18,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        User user = userRepository.getUserByUsername(username);
+        MyUser myUser = userRepository.getUserByUsername(username);
 
-        if (user == null) {
+        if (myUser == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
 
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
+        return User.builder()
+                .username(myUser.getUsername())
+                .password(myUser.getPassword())
                 .build();
     }
 }

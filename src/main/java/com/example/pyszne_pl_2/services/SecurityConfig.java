@@ -6,11 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -19,9 +16,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @AllArgsConstructor
 public class SecurityConfig {
-
-    private UserDetailsServiceImpl userDetailsService;
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -36,7 +30,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults());
+                .formLogin((formLogin)->formLogin
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .loginPage("/login")
+                        .failureUrl("/login")
+                        .loginProcessingUrl("/login")
+                        .permitAll());
         return http.build();
     }
 
