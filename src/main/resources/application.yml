@@ -9,3 +9,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update #Update DB based on entities
+  jackson:
+    serialization:
+      indent-output: true
