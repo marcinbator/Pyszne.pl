@@ -27,7 +27,7 @@ public class SearchController {
     }
 
     @PostMapping
-    public String search(@ModelAttribute(name="pizza") Pizza pizza){
+    public String search(Pizza pizza){
         if(pizzaRepository.findPizzaByName(pizza.getName()).isPresent()){
             pizza.setId(Objects.requireNonNull(pizzaRepository.findPizzaByName(pizza.getName()).orElse(null)).getId());
             System.out.println("no"+pizza.getId());

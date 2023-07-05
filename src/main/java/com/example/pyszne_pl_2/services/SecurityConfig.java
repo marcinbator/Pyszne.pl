@@ -28,21 +28,27 @@ public class SecurityConfig {
         http
                 .securityMatcher("/api/**")
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
-                )
-                .httpBasic(withDefaults());
-//                .formLogin((formLogin)->formLogin
-//                        .usernameParameter("username")
-//                        .passwordParameter("password")
-//                        .loginPage("/login")
-//                        .failureUrl("/login")
-//                        .loginProcessingUrl("/login")
-//                        .permitAll());
+                        .anyRequest()
+                        .authenticated()
+                );
         return http.build();
     }
 
     @Bean
-    @Order(2)
+    @Order(1)
+    public SecurityFilterChain formFilterChain(HttpSecurity http) throws Exception {
+        http
+                .securityMatcher("/login")
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest()
+                        .permitAll()
+                )
+                .formLogin((formLogin)->formLogin
+                        .loginPage("/login"));
+        return http.build();
+    }
+
+    @Bean
     public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize

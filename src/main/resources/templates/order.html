@@ -6,10 +6,10 @@
 </head>
 <body>
 <a href="/">Wróć</a>
-<form action="#" th:action="@{/order}" th:object="${pizza}" method="POST">
+<form action="#" th:action="@{/order}" method="POST">
   <label>
     Name:
-    <input type="text" th:field="*{name}"/>
+    <input type="text" name="name"/>
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
   </label>
   <label>
