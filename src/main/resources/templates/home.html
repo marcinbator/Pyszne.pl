@@ -9,6 +9,10 @@
   Szukaj pizzy w bazie
 </a>
 <br/>
+<p th:if="${name==null}">elo</p>
+<p th:unless="${name==null}">
+  <p th:text="${name}">
+</p>
 <a href="/api/pizzas">Wyświetl API pizzy</a>
 </body>
 </html>

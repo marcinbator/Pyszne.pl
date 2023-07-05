@@ -18,4 +18,7 @@ public class Pizza {
     private String name;
 
     private BigDecimal price;
+
+    @ManyToOne
+    private MyUser user;
 }
