@@ -6,19 +6,21 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data
-@Entity
+//DB data model
+
+@Data //Data - creates constructors, getters and setters
+@Entity //JPA entity - creates, updates or accommodates to DB model (specified in application.jml)
 public class Pizza {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id //Required - id marking
+    @GeneratedValue(strategy = GenerationType.AUTO) //Auto - generated value with selected strategy
     private Integer id;
 
-    @Size(min=5)
+    @Size(min=5) //Data validation
     private String name;
 
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne //Foreign key - many-to-one relation
     private MyUser user;
 }

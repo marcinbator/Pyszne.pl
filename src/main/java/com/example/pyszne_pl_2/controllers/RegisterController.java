@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+//Same as in Search Controller
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/register")
 public class RegisterController {
 
-    private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepository; //for DB actions
+    private PasswordEncoder passwordEncoder; //for password encoding
 
     @GetMapping
     public String register(){
@@ -25,7 +27,7 @@ public class RegisterController {
     @PostMapping
     public String registerProcess(MyUser user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        userRepository.save(user); //Adding new user to DB
         return "redirect:/login";
     }
 

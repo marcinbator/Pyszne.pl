@@ -1,48 +1,47 @@
-package com.example.pyszne_pl_2.services;
+package com.example.pyszne_pl_2.config;
 
-import com.example.pyszne_pl_2.models.MyUser;
-import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+//Configuration of secure authentication process
+
 @EnableWebSecurity
 @Configuration
-@AllArgsConstructor
 public class SecurityConfig {
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() { //Bean that is urgent for registration process (hashes)
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    @Order(1)
-    public SecurityFilterChain formLoginFilterChain(HttpSecurity http, AuthenticationManagerBuilder auth) throws Exception {
+    @Order(1) //Order of using filterChains
+    public SecurityFilterChain apiFilterChain(HttpSecurity http) throws Exception { //Config of URLs that require authentication
         http
-                .securityMatcher("/api/**")
+                .securityMatcher("/api/**") //URLs
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest()
-                        .authenticated()
+                        .anyRequest() //POST, GET etc
+                        .authenticated() //Needs to be authenticated
                 )
-                .formLogin((formLogin)->formLogin
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/"));
+                .formLogin((formLogin)->formLogin //Settings of login form
+                        .loginPage("/login") //Custom login URL (page specified in WebConfig)
+                        .defaultSuccessUrl("/")); //Custom success URL
         return http.build();
     }
 
 
     @Bean
-    public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception { //Same as above but for any other URLs
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().permitAll()
+                        .anyRequest()
+                        .permitAll() //Open, does not require authentication
                 )
                 .formLogin((formLogin)->formLogin
                         .loginPage("/login"))

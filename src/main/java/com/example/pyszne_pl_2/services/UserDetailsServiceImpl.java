@@ -9,16 +9,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
-@Service
+//Service that creates MyUser object from DB repository based on its username.
+
+@AllArgsConstructor //Constructor demanding all args
+@Service //Service Bean annotation
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private UserRepository userRepository; //Repository with DB actions
 
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        MyUser myUser = userRepository.getUserByUsername(username);
+        MyUser myUser = userRepository.getUserByUsername(username); //New MyUser object creation from DB
 
         if (myUser == null) {
             throw new UsernameNotFoundException("Could not find user");
@@ -27,6 +29,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return User.builder()
                 .username(myUser.getUsername())
                 .password(myUser.getPassword())
-                .build();
+                .build(); //Building User (Java) object from MyUser
     }
 }
