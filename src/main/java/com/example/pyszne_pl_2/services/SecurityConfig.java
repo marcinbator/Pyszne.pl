@@ -37,19 +37,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    @Order(1)
-    public SecurityFilterChain formFilterChain(HttpSecurity http) throws Exception {
-        http
-                .securityMatcher("/login")
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest()
-                        .permitAll()
-                )
-                .formLogin((formLogin)->formLogin
-                        .loginPage("/login"));
-        return http.build();
-    }
 
     @Bean
     public SecurityFilterChain defaultFilterChain(HttpSecurity http) throws Exception {
@@ -57,6 +44,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().permitAll()
                 )
+                .formLogin((formLogin)->formLogin
+                        .loginPage("/login"))
                 .logout(logout->logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login"));
