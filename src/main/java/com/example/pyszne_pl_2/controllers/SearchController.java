@@ -38,8 +38,8 @@ public class SearchController {
                             .findPizzaByName(pizza.getName())
                             .orElse(null))
                     .getId()); //Set id for founded pizza
-            return "redirect:/api/pizzas/"+pizza.getId(); //redirect to API with proper id
+            return "redirect:/api/pizza/pizzas/"+pizza.getId(); //redirect to API with proper id
         }
-        return "redirect:/api/pizzas/not-found";
+        return "redirect:/api/pizza/pizzas/not-found";
     }
 }
